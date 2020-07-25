@@ -8,89 +8,88 @@
     <label class="name">
       <span>Название заметки:</span>
       <input
-          class="name__field"
-          type="text"
-          v-model="note.name"
+        class="name__field"
+        type="text"
+        v-model="note.name"
       >
     </label>
 
     <TodoList
-        :items="note.todo"
-        :isEditable="true"
-        :onCheck="onCheckTodoList"
-        :onDelete="deleteTodo"
+      :items="note.todo"
+      :isEditable="true"
+      :onCheck="onCheckTodoList"
+      :onDelete="deleteTodo"
     />
 
     <div class="controls">
       <div class="controls__column">
         <Button
-            :onClick="addTodo"
-            :type="`accept`"
+          :onClick="addTodo"
+          :type="`accept`"
         >Добавить пункт
         </Button>
       </div>
 
       <button
-          v-if="this.currentSnapshot !== 0"
-          class="undo"
-          @click="undo"
+        v-if="this.currentSnapshot !== 0"
+        class="undo"
+        @click="undo"
       >
         <img src="../assets/icons/undo.svg" alt="undo">
       </button>
 
       <button
-          v-if="history.length - 1 !== this.currentSnapshot"
-          class="redo"
-          @click="redo"
+        v-if="history.length - 1 !== this.currentSnapshot"
+        class="redo"
+        @click="redo"
       >
         <img src="../assets/icons/redo.svg" alt="redo">
       </button>
 
       <Button
-          v-if="isEdit"
-          :onClick="() => this.deleteConfirmIsShown = true"
-          :type="`cancel`"
+        v-if="isEdit"
+        :onClick="() => this.deleteConfirmIsShown = true"
+        :type="`cancel`"
       >Удалить
       </Button>
 
       <Button
-          :onClick="() => this.confirmCancelIsShown = true"
-          :type="`cancel`"
+        :onClick="() => this.confirmCancelIsShown = true"
+        :type="`cancel`"
       >Отменить
       </Button>
 
       <Button
-          :onClick="saveNote"
-          :type="`accept`"
+        :onClick="saveNote"
+        :type="`accept`"
       >Сохранить
       </Button>
     </div>
 
     <Confirm
-        v-if="confirmCancelIsShown"
-        :onCancel="() => this.confirmCancelIsShown = false"
-        :onSubmit="() => this.$router.push({path: '/'})"
+      v-if="confirmCancelIsShown"
+      :onCancel="() => this.confirmCancelIsShown = false"
+      :onSubmit="() => this.$router.push({path: '/'})"
     >Вы уверены?
     </Confirm>
 
     <Confirm
-        v-if="validateError"
-        :onCancel="() => this.validateError = false"
-        :isNotification="true"
+      v-if="validateError"
+      :onCancel="() => this.validateError = false"
+      :isNotification="true"
     >Пожалуйста, заполните все поля.
     </Confirm>
 
     <Confirm
-        v-if="deleteConfirmIsShown"
-        :onCancel="() => this.deleteConfirmIsShown = false"
-        :onSubmit="deleteNote"
+      v-if="deleteConfirmIsShown"
+      :onCancel="() => this.deleteConfirmIsShown = false"
+      :onSubmit="deleteNote"
     >Вы действительно хотите удалить эту заметку?
     </Confirm>
   </main>
 </template>
 
 <script>
-
   import {store} from '../store';
   import router from '../router';
 
@@ -177,7 +176,6 @@
       }
     },
   }
-
 </script>
 
 <style scoped>

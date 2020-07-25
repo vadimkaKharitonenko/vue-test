@@ -59,7 +59,7 @@ const updateLocalStorage = (notes) => localStorage.setItem('notes', JSON.stringi
 const getters = {
   getNotes: state => state.notes,
   getNoteByIndex: state => index =>
-    state.notes.filter((_, i) => i === Number(index))[0]
+    state.notes.filter((_, i) => i === Number(index))[0],
 };
 
 const mutations = {
@@ -82,14 +82,14 @@ const mutations = {
     if (localStorage.getItem('notes')) {
       state.notes = JSON.parse(localStorage.getItem('notes'));
     }
-  }
+  },
 };
 
 const actions = {
   deleteNote: (context, payload) => context.commit('DELETE_NOTE', payload),
   createNote: (context, payload) => context.commit('CREATE_NOTE', payload),
   editNote: (context, payload) => context.commit('EDIT_NOTE', payload),
-  initialState: context => context.commit('INITIAL_STATE')
+  initialState: context => context.commit('INITIAL_STATE'),
 };
 
 export default {

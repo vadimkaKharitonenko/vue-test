@@ -7,12 +7,9 @@
 
     <NoteList :notes="notes"/>
   </main>
-
-
 </template>
 
 <script>
-
   import {store} from '../store';
 
   import NoteList from '../components/NoteList';
@@ -28,5 +25,4 @@
       }
     }
   }
-
 </script>

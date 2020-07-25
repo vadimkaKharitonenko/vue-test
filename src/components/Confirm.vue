@@ -6,23 +6,23 @@
       </p>
       <div class="confirm__controls">
         <Button
-            v-if="!isNotification"
-            :onClick="onSubmit"
-            :type="`accept`"
+          v-if="!isNotification"
+          :onClick="onSubmit"
+          :type="`accept`"
         >Да
         </Button>
 
         <Button
-            v-if="!isNotification"
-            :onClick="onCancel"
-            :type="`cancel`"
+          v-if="!isNotification"
+          :onClick="onCancel"
+          :type="`cancel`"
         >Нет
         </Button>
 
         <Button
-            v-if="isNotification"
-            :onClick="onCancel"
-            :type="`accept`"
+          v-if="isNotification"
+          :onClick="onCancel"
+          :type="`accept`"
         >ОК
         </Button>
       </div>
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-
   import Button from './buttons/Button';
 
   export default {
@@ -44,9 +43,7 @@
       onSubmit: Function,
       isNotification: Boolean
     },
-    methods: {}
   }
-
 </script>
 
 <style scoped>

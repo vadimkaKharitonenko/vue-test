@@ -1,21 +1,17 @@
 <template>
   <button
-      class="delete"
-      @click="onClick"
+    class="delete"
+    @click="onClick"
   />
 </template>
 
 <script>
-
   export default {
     name: 'DeleteButton',
-    components: {},
     props: {
       onClick: Function,
     },
-    methods: {}
   }
-
 </script>
 
 <style scoped>

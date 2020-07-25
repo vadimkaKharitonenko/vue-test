@@ -2,14 +2,14 @@
   <article class="note">
     <header class="note__header">
       <input
-          class="note__name"
-          type="text"
-          :value="note.name"
+        class="note__name"
+        type="text"
+        :value="note.name"
       />
       <router-link :to="`/note/${index}`">
         <img
-            src="../assets/icons/edit.svg"
-            alt="edit"
+          src="../assets/icons/edit.svg"
+          alt="edit"
         >
       </router-link>
 
@@ -17,14 +17,13 @@
     </header>
 
     <TodoList
-        :items="note.todo"
-        :isEditable="false"
+      :items="note.todo"
+      :isEditable="false"
     />
   </article>
 </template>
 
 <script>
-
   import TodoList from './TodoList';
   import DeleteButton from './buttons/DeleteButton';
 
@@ -39,9 +38,7 @@
       onDelete: Function,
       index: Number
     },
-    methods: {}
   }
-
 </script>
 
 <style scoped>

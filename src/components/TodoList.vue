@@ -1,18 +1,18 @@
 <template>
   <ul class="todo-list">
     <Todo
-        v-for="(todo, index) in items"
-        :index="index"
-        :todo="todo"
-        :isEditable="isEditable"
-        :onCheck="onCheck"
-        :onDelete="onDelete"
+      v-for="(todo, index) in items"
+      :key="index"
+      :index="index"
+      :todo="todo"
+      :isEditable="isEditable"
+      :onCheck="onCheck"
+      :onDelete="onDelete"
     />
   </ul>
 </template>
 
 <script>
-
   import Todo from './Todo';
 
   export default {
@@ -27,7 +27,6 @@
       onDelete: Function
     }
   }
-
 </script>
 
 <style scoped>

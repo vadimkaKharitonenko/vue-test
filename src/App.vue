@@ -5,7 +5,6 @@
 </template>
 
 <style>
-
   #app {
     max-width: 600px;
     margin: 0 auto;
@@ -80,5 +79,4 @@
       padding: 10px;
     }
   }
-
 </style>

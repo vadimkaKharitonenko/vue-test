@@ -1,28 +1,27 @@
 <template>
   <li :class="`todo todo_editable_${isEditable}`">
     <Checkbox
-        :checked="todo.checked"
-        :disabled="!isEditable"
-        :onChange="checked => onCheck({checked, index})"
+      :checked="todo.checked"
+      :disabled="!isEditable"
+      :onChange="checked => onCheck({checked, index})"
     />
 
     <input
-        class="todo__name"
-        type="text"
-        placeholder="Текст..."
-        v-model="todo.name"
-        :readonly="!isEditable"
+      class="todo__name"
+      type="text"
+      placeholder="Текст..."
+      v-model="todo.name"
+      :readonly="!isEditable"
     />
 
     <DeleteButton
-        v-if="isEditable"
-        :onClick="() => onDelete(index)"
+      v-if="isEditable"
+      :onClick="() => onDelete(index)"
     />
   </li>
 </template>
 
 <script>
-
   import Checkbox from './Checkbox';
   import DeleteButton from './buttons/DeleteButton';
 
@@ -40,7 +39,6 @@
       index: Number
     },
   }
-
 </script>
 
 <style scoped>

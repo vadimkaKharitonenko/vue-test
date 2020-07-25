@@ -1,26 +1,26 @@
 <template>
   <div class="note-list">
     <Note
-        v-if="notes"
-        v-for="(note, index) in notes"
-        :index="index"
-        :note="note"
-        :onDelete="() => setNoteToDelete(index)"
+      v-if="notes"
+      v-for="(note, index) in notes"
+      :key="index"
+      :index="index"
+      :note="note"
+      :onDelete="() => setNoteToDelete(index)"
     />
 
     <p v-if="!notes.length">Нет заметок</p>
 
     <Confirm
-        v-if="noteToDelete !== false"
-        :onCancel="() => setNoteToDelete(false)"
-        :onSubmit="() => deleteNote(this.noteToDelete)"
+      v-if="noteToDelete !== false"
+      :onCancel="() => setNoteToDelete(false)"
+      :onSubmit="() => deleteNote(this.noteToDelete)"
     >Вы уверены?
     </Confirm>
   </div>
 </template>
 
 <script>
-
   import {store} from '../store';
 
   import Note from './Note';
@@ -50,7 +50,6 @@
       }
     }
   }
-
 </script>
 
 <style scoped>

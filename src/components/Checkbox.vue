@@ -1,28 +1,24 @@
 <template>
   <label :class="`checkbox checkbox_disabled_${disabled}`">
     <input
-        class="checkbox__input"
-        type="checkbox"
-        @change="e => onChange(e.target.checked)"
-        :checked="checked"
+      class="checkbox__input"
+      type="checkbox"
+      @change="e => onChange(e.target.checked)"
+      :checked="checked"
     >
     <span class="checkbox__mark"/>
-
   </label>
 </template>
 
 <script>
-
   export default {
     name: 'Checkbox',
-    components: {},
     props: {
       checked: Boolean,
       disabled: Boolean,
       onChange: Function
     },
   }
-
 </script>
 
 <style scoped>

@@ -1,17 +1,15 @@
 <template>
   <button
-      :class="`button button_type_${type}`"
-      @click="onClick"
+    :class="`button button_type_${type}`"
+    @click="onClick"
   >
     <slot></slot>
   </button>
 </template>
 
 <script>
-
   export default {
     name: 'Button',
-    components: {},
     props: {
       type: {
         type: String,
@@ -22,7 +20,6 @@
         default: () => console.log('click')
       }
     },
-    methods: {}
   }
 </script>
 
