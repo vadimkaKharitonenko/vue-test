@@ -3,15 +3,14 @@
     <Checkbox
         :checked="todo.checked"
         :disabled="!isEditable"
-        :onChange="checked => onChange({checked, index})"
+        :onChange="checked => onCheck({checked, index})"
     />
 
     <input
         class="todo__name"
         type="text"
         placeholder="Текст..."
-        @input="e => onChange({name: e.target.value, index})"
-        :value="todo.name"
+        v-model="todo.name"
         :readonly="!isEditable"
     />
 
@@ -36,7 +35,7 @@
     props: {
       todo: Object,
       isEditable: Boolean,
-      onChange: Function,
+      onCheck: Function,
       onDelete: Function,
       index: Number
     },

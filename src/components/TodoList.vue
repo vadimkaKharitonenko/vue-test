@@ -5,7 +5,7 @@
         :index="index"
         :todo="todo"
         :isEditable="isEditable"
-        :onChange="onChange"
+        :onCheck="onCheck"
         :onDelete="onDelete"
     />
   </ul>
@@ -23,7 +23,7 @@
     props: {
       items: Array,
       isEditable: Boolean,
-      onChange: Function,
+      onCheck: Function,
       onDelete: Function
     }
   }
@@ -35,5 +35,11 @@
     display: grid;
     grid-row-gap: 8px;
     padding-left: 8px;
+  }
+
+  @media screen and (max-width: 599px) {
+    .todo-list {
+      padding: 0 10px;
+    }
   }
 </style>

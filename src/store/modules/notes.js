@@ -54,6 +54,8 @@ const state = {
   ]
 };
 
+const updateLocalStorage = (notes) => localStorage.setItem('notes', JSON.stringify(notes));
+
 const getters = {
   getNotes: state => state.notes,
   getNoteByIndex: state => index =>
@@ -61,14 +63,33 @@ const getters = {
 };
 
 const mutations = {
-  DELETE_NOTE: (state, payload) => state.notes = state.notes
-    .filter((_, i) => i !== payload.id),
-  CREATE_NOTE: (state, payload) => state.notes = [...state.notes, payload],
+  DELETE_NOTE: (state, payload) => {
+    state.notes = state.notes
+      .filter((_, i) => i !== Number(payload.index));
+    updateLocalStorage(state.notes);
+  },
+  CREATE_NOTE: (state, payload) => {
+    state.notes = [...state.notes, payload];
+    updateLocalStorage(state.notes);
+  },
+  EDIT_NOTE: (state, payload) => {
+    state.notes = state.notes
+      .reduce((acc, note, i) =>
+        Number(payload.index) === i ? [...acc, payload.note] : [...acc, note], []);
+    updateLocalStorage(state.notes);
+  },
+  INITIAL_STATE: state => {
+    if (localStorage.getItem('notes')) {
+      state.notes = JSON.parse(localStorage.getItem('notes'));
+    }
+  }
 };
 
 const actions = {
   deleteNote: (context, payload) => context.commit('DELETE_NOTE', payload),
   createNote: (context, payload) => context.commit('CREATE_NOTE', payload),
+  editNote: (context, payload) => context.commit('EDIT_NOTE', payload),
+  initialState: context => context.commit('INITIAL_STATE')
 };
 
 export default {

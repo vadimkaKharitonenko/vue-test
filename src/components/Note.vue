@@ -6,7 +6,7 @@
           type="text"
           :value="note.name"
       />
-      <router-link :to="`/edit/${index}`">
+      <router-link :to="`/note/${index}`">
         <img
             src="../assets/icons/edit.svg"
             alt="edit"
@@ -62,5 +62,11 @@
   .note__name {
     padding: 8px;
     font-weight: bold;
+  }
+
+  @media screen and (max-width: 599px) {
+    .note {
+      padding: 0 10px 16px;
+    }
   }
 </style>

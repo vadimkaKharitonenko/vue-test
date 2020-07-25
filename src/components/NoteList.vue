@@ -41,8 +41,8 @@
       }
     },
     methods: {
-      deleteNote(id) {
-        store.dispatch('deleteNote', {id});
+      deleteNote(index) {
+        store.dispatch('deleteNote', {index});
         this.setNoteToDelete(false);
       },
       setNoteToDelete(index) {

@@ -74,4 +74,11 @@
     background-color: white;
   }
 
+  @media screen and (max-width: 599px) {
+    .header {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+
 </style>
