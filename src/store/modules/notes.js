@@ -55,12 +55,21 @@ const state = {
 };
 
 const getters = {
-  GET_NOTES: state => state.notes
+  getNotes: state => state.notes,
+  getNoteByIndex: state => index =>
+    state.notes.filter((_, i) => i === Number(index))[0]
 };
 
-const mutations = {};
+const mutations = {
+  DELETE_NOTE: (state, payload) => state.notes = state.notes
+    .filter((_, i) => i !== payload.id),
+  CREATE_NOTE: (state, payload) => state.notes = [...state.notes, payload],
+};
 
-const actions = {};
+const actions = {
+  deleteNote: (context, payload) => context.commit('DELETE_NOTE', payload),
+  createNote: (context, payload) => context.commit('CREATE_NOTE', payload),
+};
 
 export default {
   state,

@@ -3,6 +3,7 @@
     <input
         class="checkbox__input"
         type="checkbox"
+        @change="e => onChange(e.target.checked)"
         :checked="checked"
     >
     <span class="checkbox__mark"/>
@@ -17,7 +18,8 @@
     components: {},
     props: {
       checked: Boolean,
-      disabled: Boolean
+      disabled: Boolean,
+      onChange: Function
     },
   }
 
@@ -33,20 +35,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     border-radius: 4px;
     border: 1px solid #333333;
     cursor: pointer;
   }
 
+  .checkbox__input:checked + .checkbox__mark {
+    border-color: forestgreen;
+  }
+
   .checkbox__input:checked + .checkbox__mark::before {
     content: '';
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
     border-radius: 4px;
-    background-color: #333333;
+    background-color: forestgreen;
   }
 
   .checkbox_disabled_true {

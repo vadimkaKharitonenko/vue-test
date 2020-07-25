@@ -1,21 +1,21 @@
 <template>
   <main>
     <header class="header">
-      <h2>Создание заметки</h2>
+      <h2>Редактирование заметки</h2>
       <router-link :to="{name: 'Home'}">Вернуться на главную</router-link>
     </header>
 
     <label class="name">
       <span>Название заметки:</span>
       <input
-          v-model="name"
           class="name__field"
           type="text"
+          v-model="note.name"
       >
     </label>
 
     <TodoList
-        :items="todo"
+        :items="note.todo"
         :isEditable="true"
         :onChange="onChangeTodoList"
         :onDelete="deleteTodo"
@@ -37,7 +37,6 @@
       </Button>
 
       <Button
-          :onClick="addNote"
           :type="`accept`"
       >Сохранить
       </Button>
@@ -57,49 +56,41 @@
     >Пожалуйста, заполните все поля.
     </Confirm>
   </main>
-
-
 </template>
 
 <script>
 
   import {store} from '../store';
-  import router from '../router';
 
   import TodoList from '../components/TodoList';
-  import Button from '../components/buttons/Button';
   import Confirm from '../components/Confirm';
+  import Button from '../components/buttons/Button';
+  import router from '../router';
 
   export default {
-    name: 'CreateNote',
+    name: 'EditNote',
     components: {
       TodoList,
-      Button,
-      Confirm
+      Confirm,
+      Button
     },
     data() {
       return {
-        name: '',
-        todo: [],
+        note: store.getters.getNoteByIndex(this.$router.currentRoute.params.id),
         confirmIsShown: false,
         validateError: false
       }
     },
     methods: {
       addTodo() {
-        return this.todo = [...this.todo, {name: '', checked: false}];
+        return this.note.todo = [...this.note.todo, {name: '', checked: false}];
       },
       deleteTodo(index) {
-        return this.todo = this.todo.filter((_, i) => i !== index);
+        return this.note.todo = this.note.todo.filter((_, i) => i !== index);
       },
       onChangeTodoList(todo) {
-        if (todo.checked !== undefined) this.todo[todo.index].checked = todo.checked;
-        if (todo.name) this.todo[todo.index].name = todo.name;
-      },
-      addNote() {
-        if (this.validateNote() > 0) return this.validateError = true;
-        store.dispatch('createNote', {name: this.name, todo: this.todo});
-        return this.goToHome();
+        if (todo.checked !== undefined) this.note.todo[todo.index].checked = todo.checked;
+        if (todo.name) this.note.todo[todo.index].name = todo.name;
       },
       onCancel() {
         this.confirmIsShown = true;
@@ -113,14 +104,6 @@
       goToHome() {
         return router.push({path: '/'});
       },
-      validateNote() {
-        let errors = 0;
-
-        if (!this.name) errors++;
-        this.todo.forEach(todo => !todo.name ? errors++ : {});
-
-        return errors;
-      }
     }
   }
 

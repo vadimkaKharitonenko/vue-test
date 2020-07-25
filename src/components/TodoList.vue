@@ -1,9 +1,12 @@
 <template>
   <ul class="todo-list">
     <Todo
-        v-for="todo in items"
+        v-for="(todo, index) in items"
+        :index="index"
         :todo="todo"
         :isEditable="isEditable"
+        :onChange="onChange"
+        :onDelete="onDelete"
     />
   </ul>
 </template>
@@ -19,7 +22,9 @@
     },
     props: {
       items: Array,
-      isEditable: Boolean
+      isEditable: Boolean,
+      onChange: Function,
+      onDelete: Function
     }
   }
 
@@ -29,5 +34,6 @@
   .todo-list {
     display: grid;
     grid-row-gap: 8px;
+    padding-left: 8px;
   }
 </style>

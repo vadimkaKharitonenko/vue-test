@@ -8,7 +8,7 @@
 
   #app {
     max-width: 600px;
-    margin: 20px auto;
+    margin: 0 auto;
   }
 
   * {
@@ -62,12 +62,16 @@
   }
 
   .header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
-    padding-bottom: 16px;
+    padding: 16px 0;
     border-bottom: 1px solid #c1bdbd;
+    background-color: white;
   }
 
 </style>

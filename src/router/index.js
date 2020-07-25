@@ -1,7 +1,9 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+import Home from '../views/Home.vue';
 import CreateNote from '../views/CreateNote';
+import EditNote from '../views/EditNote';
 
 Vue.use(VueRouter)
 
@@ -12,10 +14,15 @@ const routes = [
     component: Home
   },
   {
-    path: '/',
+    path: '/create',
     name: 'CreateNote',
     component: CreateNote
   },
+  {
+    path: '/edit/:id',
+    name: 'EditNote',
+    component: EditNote
+  }
 ]
 
 const router = new VueRouter({

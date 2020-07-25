@@ -24,7 +24,7 @@
     },
     computed: {
       notes() {
-        return store.getters.GET_NOTES;
+        return store.getters.getNotes;
       }
     }
   }
